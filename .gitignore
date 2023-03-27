@@ -104,6 +104,8 @@ celerybeat.pid
 # Environments
 .env
 .venv
+royalvanguard-env/
+royalvanguard-env
 env/
 venv/
 ENV/
