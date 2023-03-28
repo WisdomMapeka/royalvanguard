@@ -106,6 +106,8 @@ celerybeat.pid
 .venv
 royalvanguard-env/
 royalvanguard-env
+media/
+media
 env/
 venv/
 ENV/
