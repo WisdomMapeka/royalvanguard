@@ -31,7 +31,7 @@ class  TeamMembersAdmin(admin.ModelAdmin):
     list_display = ('name', 'position')
 
 class  TestimonialsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image')
+    list_display = ('client_name', 'image')
 
 class  NewsLetterAdmin(admin.ModelAdmin):
     list_display = ('title', 'summary', 'email')

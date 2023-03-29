@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce import models as tinymce_models
 
 # Create your models here.
 class Contacts_Plus_Social_Media(models.Model):
@@ -42,7 +43,7 @@ class SummaryServices(models.Model):
 class AboutUs(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
     summary = models.CharField(max_length=500, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+    description = tinymce_models.HTMLField(null=True, blank=True)
     image = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
 
     incon = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
@@ -124,15 +125,13 @@ class TeamMembers(models.Model):
 
 
 class Testimonials(models.Model):
-    title = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(upload_to="Testimonials/", null=True, blank=True)
-    image_icon = models.ImageField(upload_to="Testimonials/", null=True, blank=True)
-    summary = models.CharField(max_length=500, null=True, blank=True)
-    name = models.CharField(max_length=500, null=True, blank=True)
+    client_name = models.CharField(max_length=500, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    profession = models.CharField(max_length=200, null=True, blank=True)
+    image = models.ImageField(upload_to="Testimonials/", null=True, blank=True)
 
     def __str__(self):
-        return self.title
+        return self.client_name
 
 class NewsLetter(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
