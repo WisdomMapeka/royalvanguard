@@ -3,23 +3,22 @@ from tinymce import models as tinymce_models
 
 # Create your models here.
 class Contacts_Plus_Social_Media(models.Model):
+    opening_message = tinymce_models.HTMLField(null=True, blank=True)
     address = models.CharField(max_length=500, blank=True, null=True)
     email = models.EmailField(null=True, blank=True)
     phone = models.CharField(max_length=20, null=True, blank=True)
     open_hours = models.CharField(max_length=500, blank=True, null=True)
-    facebook = models.ImageField(upload_to="socialMedia/", blank=True, null=True)
-    facebook_link = models.TextField(null=True, blank=True)
-    twitter = models.ImageField(upload_to="socialMedia/", blank=True, null=True)
-    twitter_link = models.TextField(null=True, blank=True)
-    instagram = models.ImageField(upload_to="socialMedia/", blank=True, null=True)
-    instagram_link = models.TextField(null=True, blank=True)
-    youtube = models.ImageField(upload_to="socialMedia/", blank=True, null=True)
-    youtube_link = models.TextField(null=True, blank=True)
-    linkedin = models.ImageField(upload_to="socialMedia/", blank=True, null=True)
-    linkedin_link = models.TextField(null=True, blank=True)
+    facebook_link = models.CharField(max_length=1000, blank=True, null=True)
+    twitter_link = models.CharField(max_length=1000, blank=True, null=True)
+    instagram_link = models.CharField(max_length=1000, blank=True, null=True)
+    youtube_link = models.CharField(max_length=1000, blank=True, null=True)
+    linkedin_link = models.CharField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
-        return self.address
+        if self.address:
+            return self.address
+        else:
+            return "Contacts"
 
 
 class Slider(models.Model):
@@ -61,7 +60,7 @@ class AboutUs(models.Model):
 class Services(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
     summary = models.CharField(max_length=500, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+    description = tinymce_models.HTMLField(null=True, blank=True)
     incon = models.ImageField(upload_to="Services/", null=True, blank=True)
 
     def __str__(self):
@@ -101,24 +100,14 @@ class OurProjects(models.Model):
         return self.title
 
 
-# class FreeQuote(models.Model):
-#     title = models.CharField(max_length=200, null=True, blank=True)
-#     summary = models.CharField(max_length=500, null=True, blank=True)
-#     name = models.CharField(max_length=500, null=True, blank=True)
-#     email = models.EmailField(null=True, blank=True)
-#     phone = models.CharField(max_length=500, null=True, blank=True)
-#     description = models.TextField(null=True, blank=True)
-
-#     def __str__(self):
-#         return self.title
-
 class TeamMembers(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     position = models.CharField(max_length=200, null=True, blank=True)
     profile_pic = models.ImageField(upload_to="TeamMembers/Profiles/", null=True, blank=True)
+    facebook_link = models.TextField(null=True, blank=True)
     twitter_link = models.TextField(null=True, blank=True)
     instagram_link = models.TextField(null=True, blank=True)
-    linkedin_link = models.TextField(null=True, blank=True)
+   
 
     def __str__(self):
         return self.name
@@ -137,6 +126,36 @@ class NewsLetter(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
     summary = models.CharField(max_length=500, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=200, null=True, blank=True)
+    email  = models.EmailField(null=True, blank=True)
+    phone = models.CharField(max_length=200, null=True, blank=True)
+    subject = models.CharField(max_length=200, null=True, blank=True)
+    message =  models.TextField(null=True, blank=True)
+    sent = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+
+class ShopHomePageLabels(models.Model):
+    title = models.CharField(max_length=200, null=True, blank=True)
+    summary = models.CharField(max_length=500, null=True, blank=True)
+    description = tinymce_models.HTMLField(null=True, blank=True)
+    image = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
+
+    incon = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
+    incon_explanation = models.CharField(max_length=200, null=True, blank=True)
+    incon_second_explanation = models.CharField(max_length=200, null=True, blank=True)
+
+    incon2 = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
+    incon_explanation2 = models.CharField(max_length=200, null=True, blank=True)
+    incon_second_explanation2 = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.title

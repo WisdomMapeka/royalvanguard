@@ -1,0 +1,32 @@
+{% load static %}
+{% include './template-parts/header.html' %}
+
+
+<style>
+    .send-message-form{
+        height: 200px !important;
+    }
+    .messages, .errorlist{
+        list-style: none;
+        padding: 0%;
+        color: red;
+    }
+</style>
+    <!-- Contact Start -->
+    <div class="container-fluid bg-light overflow-hidden px-lg-0">
+        <div class="container contact px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-12  py-5 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="ps-lg-0">
+                        <div class="text-center">
+                            <h4 class="display-4 px-md-5 mb-4 text-success">Thank you for reaching us. We will get in touch with you</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    {% include './template-parts/footer.html' %}

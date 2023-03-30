@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import (Contacts_Plus_Social_Media, Slider, SummaryServices, 
                      AboutUs, Services, WhyChooseUs, OurProjects,
-                     TeamMembers, Testimonials, NewsLetter , WhyChooseUsSummary)
+                     TeamMembers, Testimonials, NewsLetter , WhyChooseUsSummary,
+                     ContactUs, ShopHomePageLabels)
 
 class  Contacts_Plus_Social_MediaAdmin(admin.ModelAdmin):
     list_display = ('address', 'email', 'phone')
@@ -39,6 +40,12 @@ class  NewsLetterAdmin(admin.ModelAdmin):
 class  WhyChooseUsSummaryAdmin(admin.ModelAdmin):
     list_display = ('summary',)
 
+class  ContactUsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'message')
+
+class ShopHomePageLabelsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'summary')
+
 
 
 
@@ -58,3 +65,5 @@ admin.site.register(OurProjects, OurProjectsAdmin)
 admin.site.register(TeamMembers, TeamMembersAdmin)
 admin.site.register(Testimonials, TestimonialsAdmin)
 admin.site.register(NewsLetter, NewsLetterAdmin)
+admin.site.register(ContactUs, ContactUsAdmin)
+admin.site.register(ShopHomePageLabels, ShopHomePageLabelsAdmin)
