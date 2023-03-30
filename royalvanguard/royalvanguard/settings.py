@@ -133,7 +133,8 @@ else:
             'NAME': config['NAME'],
             'USER': config['USER'],
             'PASSWORD': config['PASSWORD'],
-            'HOST': 'localhost'
+            'HOST': 'localhost',
+            'PORT': '3306'
         }
     }
 
