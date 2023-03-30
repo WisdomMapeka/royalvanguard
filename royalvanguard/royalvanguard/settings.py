@@ -33,7 +33,6 @@ with open(config_file_path) as config_file:
 SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 DEBUG = config['DEBUG']
 
 
@@ -117,7 +116,7 @@ TINYMCE_DEFAULT_CONFIG = {
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-if DEBUG:
+if DEBUG == True:
 
     DATABASES = {
         'default': {
