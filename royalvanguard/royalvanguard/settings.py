@@ -129,7 +129,7 @@ else:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.db.backends.mysql',
             'NAME': config['NAME'],
             'USER': config['USER'],
             'PASSWORD': config['PASSWORD'],
@@ -137,6 +137,17 @@ else:
             'PORT': '',
         }
     }
+
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #         'NAME': config['NAME'],
+    #         'USER': config['USER'],
+    #         'PASSWORD': config['PASSWORD'],
+    #         'HOST': 'localhost',
+    #         'PORT': '',
+    #     }
+    # }
 
 
 # Password validation
