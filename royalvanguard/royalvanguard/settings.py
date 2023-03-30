@@ -134,8 +134,12 @@ else:
             'USER': config['USER'],
             'PASSWORD': config['PASSWORD'],
             'HOST': config['HOST'],
-            'PORT': '3306'
-        }
+            'PORT': '3306',
+            'OPTIONS': {
+                'init_command': 'SET default_storage_engine=INNODB',
+                }
+        },
+        
     }
 
     # DATABASES = {
