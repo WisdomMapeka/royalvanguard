@@ -149,14 +149,6 @@ class ShopHomePageLabels(models.Model):
     description = tinymce_models.HTMLField(null=True, blank=True)
     image = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
 
-    incon = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
-    incon_explanation = models.CharField(max_length=200, null=True, blank=True)
-    incon_second_explanation = models.CharField(max_length=200, null=True, blank=True)
-
-    incon2 = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
-    incon_explanation2 = models.CharField(max_length=200, null=True, blank=True)
-    incon_second_explanation2 = models.CharField(max_length=200, null=True, blank=True)
-
     def __str__(self):
         return self.title
 
