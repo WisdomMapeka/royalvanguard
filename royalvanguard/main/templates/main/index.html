@@ -6,7 +6,10 @@
         <div class="owl-carousel header-carousel position-relative">
             {% for slide in slider %}
             <div class="owl-carousel-item position-relative">
+                {% if slide.background_image %}
                 <img class="img-fluid" src="{{slide.background_image.url}}" alt="">
+                {% else %} 
+                {% endif %}
                 <div class="carousel-inner">
                     <div class="container">
                         <div class="row justify-content-center">
@@ -41,9 +44,12 @@
                 {% endif %}
                     <div class="h-100 bg-dark p-4 p-xl-5">
                         <div class="d-flex align-items-center justify-content-between mb-4">
+                            {% if service_summary.incon %}
                             <div class="btn-square rounded-circle" style="width: 64px; height: 64px; background: #000000;">
                                 <img class="img-fluid" src={{service_summary.incon.url}} alt="Icon">
                             </div>
+                            {% else %} 
+                            {% endif %}
                             <h1 class="display-1 mb-0" style="color: #000000;">{{forloop.counter}}</h1>
                         </div>
                         <h5 class="text-white">{{service_summary.title}}</h5>
