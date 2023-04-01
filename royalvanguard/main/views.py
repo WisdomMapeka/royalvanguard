@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from . models import (Contacts_Plus_Social_Media, Slider, SummaryServices, 
                       AboutUs, Services, WhyChooseUsSummary, OurProjects, 
-                      TeamMembers, Testimonials, ContactUs, ShopHomePageLabels)
+                      TeamMembers, Testimonials, ContactUs)
 from . forms import ContactUsForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -31,11 +31,6 @@ def index(request):
     except IndexError:
         about_us = False
 
-    try:
-        shop_details_home_page = ShopHomePageLabels.objects.all()[0]
-    except IndexError:
-        shop_details_home_page  = False
-
     
     
     return render(request, "main/index.html", {"contact_details":contact_details,
@@ -46,8 +41,7 @@ def index(request):
                                                "whychooseus":whychooseus,
                                                "projects":projects,
                                                "teammembers":teammembers,
-                                               "testimonials":testimonials,
-                                               "shop_details_home_page":shop_details_home_page 
+                                               "testimonials":testimonials
                                                })
 
 
