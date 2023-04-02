@@ -2,7 +2,9 @@ from django.contrib import admin
 from .models import (Contacts_Plus_Social_Media, Slider, SummaryServices, 
                      AboutUs, Services, WhyChooseUs, OurProjects,
                      TeamMembers, Testimonials, WhyChooseUsSummary,
-                     ContactUs)
+                     ContactUs, BackGroundImages, Sectors)
+
+admin.site.register(BackGroundImages)
 
 class  Contacts_Plus_Social_MediaAdmin(admin.ModelAdmin):
     list_display = ('address', 'email', 'phone')
@@ -17,6 +19,9 @@ class AboutUsAdmin(admin.ModelAdmin):
     list_display = ('title', 'summary')
 
 class ServicesAdmin(admin.ModelAdmin):
+    list_display = ('title', 'summary')
+
+class SectorsAdmin(admin.ModelAdmin):
     list_display = ('title', 'summary')
 
 class  WhyChooseUsAdmin(admin.ModelAdmin):
@@ -55,6 +60,7 @@ admin.site.register(Slider, SliderAdmin)
 admin.site.register(SummaryServices, SummaryServicesAdmin)
 admin.site.register(AboutUs, AboutUsAdmin)
 admin.site.register(Services, ServicesAdmin)
+admin.site.register(Sectors, SectorsAdmin)
 admin.site.register(WhyChooseUs, WhyChooseUsAdmin)
 admin.site.register(WhyChooseUsSummary, WhyChooseUsSummaryAdmin)
 admin.site.register(OurProjects, OurProjectsAdmin)

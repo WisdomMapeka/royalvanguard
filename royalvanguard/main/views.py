@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from . models import (Contacts_Plus_Social_Media, Slider, SummaryServices, 
                       AboutUs, Services, WhyChooseUsSummary, OurProjects, 
-                      TeamMembers, Testimonials, ContactUs)
+                      TeamMembers, Testimonials, ContactUs, BackGroundImages, Sectors)
 from . forms import ContactUsForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -10,6 +10,8 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
+    b = BackGroundImages.objects.all()[0]
+    sectors = Sectors.objects.all()
     try:
         contact_details = Contacts_Plus_Social_Media.objects.all()[0]
     except IndexError:
@@ -41,7 +43,9 @@ def index(request):
                                                "whychooseus":whychooseus,
                                                "projects":projects,
                                                "teammembers":teammembers,
-                                               "testimonials":testimonials
+                                               "testimonials":testimonials,
+                                               "b":b,
+                                               "sectors":sectors
                                                })
 
 

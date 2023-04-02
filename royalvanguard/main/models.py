@@ -24,6 +24,13 @@ class Contacts_Plus_Social_Media(models.Model):
             return self.address
         else:
             return "Contacts"
+            
+class BackGroundImages(models.Model):
+    name = models.CharField(max_length=200, null=True, blank=True, help_text="section where this backgound image is going to be displayed")
+    img = models.ImageField(null=True, blank=True, upload_to="BackGroundImages/")
+
+    def __str__(self):
+        return self.name
 
 
 class Slider(models.Model):
@@ -91,13 +98,27 @@ class Services(models.Model):
         return self.title
 
 
+class Sectors(models.Model):
+    title = models.CharField(max_length=200, null=True, blank=True)
+    summary = models.CharField(max_length=500, null=True, blank=True)
+    incon = models.ImageField(upload_to="Services/", null=True, blank=True,
+                              verbose_name="Icon", help_text="This is a small image which represents information added, you can download more from this webiste <a href='https://www.flaticon.com/' target='_blank' rel='noopener noreferrer'>Click To Download Icons</a>")
+
+    class Meta:
+        verbose_name = 'Sectors [max 6]'
+        verbose_name_plural = 'Sectors [max 6]'
+
+    def __str__(self):
+        return self.title
+
+
 class WhyChooseUsSummary(models.Model):
     summary = models.CharField(max_length=500, null=True, blank=True)
     image = models.ImageField(upload_to="WhyChooseUs/", null=True, blank=True)
 
     class Meta:
-        verbose_name = 'Why Choose Us Brief Information'
-        verbose_name_plural = 'Why Choose Us Brief Information'
+        verbose_name = 'Coming Soon Brief Information'
+        verbose_name_plural = 'Coming Soon Brief Information'
 
     def __str__(self):
         return self.summary
@@ -106,7 +127,7 @@ class WhyChooseUsSummary(models.Model):
 class WhyChooseUs(models.Model):
     summary = models.ForeignKey(WhyChooseUsSummary, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+    description = tinymce_models.HTMLField(null=True, blank=True)
     incon = models.ImageField(upload_to="WhyChooseUs/", null=True, blank=True,
                               verbose_name="Icon", help_text="This is a small image which represents information added, you can download more from this webiste <a href='https://www.flaticon.com/' target='_blank' rel='noopener noreferrer'>Click To Download Icons</a>")
 
@@ -114,8 +135,8 @@ class WhyChooseUs(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Why Choose Us'
-        verbose_name_plural = 'Why Choose Us'
+        verbose_name = 'Coming Soon'
+        verbose_name_plural = 'Coming Soon'
 
 OurProjects_choices = (
     ('first','completed'),
