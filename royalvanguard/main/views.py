@@ -17,6 +17,7 @@ def index(request):
         b = BackGroundImages.objects.all()[0]
     except IndexError:
         contact_details = False
+        b = False
     
     slider = Slider.objects.all()
     service_summaries = SummaryServices.objects.all()
