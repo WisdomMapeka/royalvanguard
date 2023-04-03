@@ -10,10 +10,11 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    b = BackGroundImages.objects.all()[0]
+    
     sectors = Sectors.objects.all()
     try:
         contact_details = Contacts_Plus_Social_Media.objects.all()[0]
+        b = BackGroundImages.objects.all()[0]
     except IndexError:
         contact_details = False
     
