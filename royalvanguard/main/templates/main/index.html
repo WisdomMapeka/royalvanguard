@@ -102,7 +102,6 @@
                             </div>
                             {% else %} 
                             {% endif %}
-                            <!-- <h1 class="display-1 mb-0" style="color: #000000;">{{forloop.counter}}</h1> -->
                         </div>
                         <h4 class="">{{service_summary.title}}</h4>
                         <hr class="w-25 mx-auto">
@@ -116,64 +115,6 @@
     {% endif %}
     <!-- WHY CHOOSE US -->
 
-
-    <!-- About Start -->
-    {% if about_us %}
-    <!-- <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
-        <div class="container about px-lg-0">
-            <div class="row g-0 mx-lg-0">
-                <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
-                    {% if about_us.image %}
-                    <div class="position-relative h-100">
-                        <img class="position-absolute img-fluid w-100 h-100" src="{{about_us.image.url}}" style="object-fit: cover;" alt="">
-                    </div>
-                    {% else %}
-                    {% endif %}
-                </div>
-                <div class="col-lg-6 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="p-lg-5 pe-lg-0">
-                        <div class="bg-warning mb-3" style="width: 60px; height: 2px;"></div>
-                        <h1 class="display-5 mb-4">{{about_us.title}}</h1>
-                        <p class="mb-4 pb-2">{{about_us.summary}}</p>
-                        <div class="row g-4 mb-4 pb-3">
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                                <div class="d-flex align-items-center">
-                                    {% if about_us.incon %}
-                                    <div class="btn-square bg-white rounded-circle" style="width: 64px; height: 64px;">
-                                        <img class="img-fluid" src="{{about_us.incon.url}}" alt="Icon">
-                                    </div>
-                                    {% else %}
-                                    {% endif %}
-                                    <div class="ms-4">
-                                        <h2 class="mb-1" data-toggle="counter-up">{{about_us.incon_explanation}}</h2>
-                                        <p class="fw-medium text-warning mb-0">{{about_us.incon_second_explanation}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                                <div class="d-flex align-items-center">
-                                    {% if about_us.incon2 %}
-                                    <div class="btn-square bg-white rounded-circle" style="width: 64px; height: 64px;">
-                                        <img class="img-fluid" src="{{about_us.incon2.url}}" alt="Icon">
-                                    </div>
-                                    {% else %}
-                                    {% endif %}
-                                    <div class="ms-4">
-                                        <h2 class="mb-1" data-toggle="counter-up">{{about_us.incon_explanation2}}</h2>
-                                        <p class="fw-medium text-warning mb-0">{{about_us.incon_second_explanation2}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="" class="btn btn-warning rounded-pill py-3 px-5">Explore More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% else %} -->
-    {% endif %}
-    <!-- About End -->
 
 
     <!-- Service Start -->
@@ -213,28 +154,28 @@
     <!-- Service End -->
 
 
-    <!--    coming soon  -->
-    {% if whychooseus %}
+    <!--    coming soon one  -->
+    {% if feature %}
     <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
         <div class="container feature px-lg-0">
             <div class="row g-0 mx-lg-0">
                 <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.5s">
                     <div class="p-lg-5 ps-lg-0">
                         <div class="bg-warning mb-3" style="width: 60px; height: 2px;"></div>
-                        <h1 class="display-10 mb-5">Coming Soon</h1>
-                        <h4 class="display-2 mb-5">Drown Technology</h4>
-                        <div class="row g-4">                           
+                        <h1 class="display-10 mb-5">{{feature.featureName}}</h1>
+                        <h4 class="display-2 mb-5">{{feature.title}}</h4>
+                        <!-- <div class="row g-4">                           
                             <div class="g-0 row bg-light justify-content-start" data-wow-delay="0.1s">
                                 <a class="btn" style="margin-top: 10px; margin-bottom: 10px; color: #000000; border-radius: 38px;background-color: #ffc107; width: 300px; padding: 10px;" href=""><i class="fa fa-arrow-right text-white me-3 wow fadeIn" style="border-radius: 38px;background-color: #ffc107; width: 38px; padding: 10px;"></i>Read More</a>
                             </div>
                             
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
-                    {% if whychooseus.image %}
+                    {% if feature.image %}
                     <div class="position-relative h-100">
-                        <img class="position-absolute img-fluid w-100 h-100" src={{whychooseus.image.url}} style="object-fit: cover;" alt="">
+                        <img class="position-absolute img-fluid w-100 h-100" src={{feature.image.url}} style="object-fit: cover;" alt="">
                     </div>
                     {% else %}
                     {% endif %}
@@ -243,7 +184,7 @@
         </div>
     </div>
     {% endif %}
-    <!--    coming end  -->
+    <!--    coming one end  -->
 
     <!-- SECTORS START -->
     {% if sectors %}
@@ -265,8 +206,8 @@
                         {% else %}
                         {% endif %}
                         <h4 class="mb-3">{{ service.title }}</h4>
-                        <p class="mb-4">{{ service.summary }}</p>
-                        <a class="btn" href=""><i class="fa fa-arrow-right text-white me-3"></i>Read More</a>
+                        <!-- <p class="mb-4">{{ service.summary }}</p> -->
+                        <!-- <a class="btn" href=""><i class="fa fa-arrow-right text-white me-3"></i>Read More</a> -->
                     </div>
                 </div>
                 {% endfor %}
@@ -280,6 +221,39 @@
     </div>
     {% endif %}
     <!-- SECTORS END -->
+
+
+    <!--    coming soon two  -->
+    {% if feature1 %}
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+        <div class="container feature px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
+                    {% if feature1.image %}
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src={{feature1.image.url}} style="object-fit: cover;" alt="">
+                    </div>
+                    {% else %}
+                    {% endif %}
+                </div>
+                <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-lg-5 ps-lg-0">
+                        <div class="bg-warning mb-3" style="width: 60px; height: 2px;"></div>
+                        <h1 class="display-10 mb-5">{{feature1.featureName}}</h1>
+                        <h4 class="display-2 mb-5">{{feature1.title}}</h4>
+                        <!-- <div class="row g-4">                           
+                            <div class="g-0 row bg-light justify-content-start" data-wow-delay="0.1s">
+                                <a class="btn" style="margin-top: 10px; margin-bottom: 10px; color: #000000; border-radius: 38px;background-color: #ffc107; width: 300px; padding: 10px;" href=""><i class="fa fa-arrow-right text-white me-3 wow fadeIn" style="border-radius: 38px;background-color: #ffc107; width: 38px; padding: 10px;"></i>Read More</a>
+                            </div>
+                            
+                        </div> -->
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!--    coming two end  -->
 
 
     <!-- Projects Start -->
@@ -332,6 +306,40 @@
     </div>
     {% endif %}
     <!-- Projects End -->
+
+
+
+     <!--    coming soon two  -->
+     {% if feature2 %}
+     <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+         <div class="container feature px-lg-0">
+             <div class="row g-0 mx-lg-0">
+                 <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                     <div class="p-lg-5 ps-lg-0">
+                         <div class="bg-warning mb-3" style="width: 60px; height: 2px;"></div>
+                         <h1 class="display-10 mb-5">{{feature2.featureName}}</h1>
+                         <h4 class="display-2 mb-5">{{feature2.title}}</h4>
+                         <!-- <div class="row g-4">                           
+                             <div class="g-0 row bg-light justify-content-start" data-wow-delay="0.1s">
+                                 <a class="btn" style="margin-top: 10px; margin-bottom: 10px; color: #000000; border-radius: 38px;background-color: #ffc107; width: 300px; padding: 10px;" href=""><i class="fa fa-arrow-right text-white me-3 wow fadeIn" style="border-radius: 38px;background-color: #ffc107; width: 38px; padding: 10px;"></i>Read More</a>
+                             </div>
+                             
+                         </div> -->
+                     </div>
+                 </div>
+                 <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
+                     {% if feature2.image %}
+                     <div class="position-relative h-100">
+                         <img class="position-absolute img-fluid w-100 h-100" src={{feature2.image.url}} style="object-fit: cover;" alt="">
+                     </div>
+                     {% else %}
+                     {% endif %}
+                 </div>
+             </div>
+         </div>
+     </div>
+     {% endif %}
+     <!--    coming two end  -->
 
 
 

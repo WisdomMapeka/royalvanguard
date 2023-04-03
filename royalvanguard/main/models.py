@@ -112,31 +112,21 @@ class Sectors(models.Model):
         return self.title
 
 
-class WhyChooseUsSummary(models.Model):
-    summary = models.CharField(max_length=500, null=True, blank=True)
-    image = models.ImageField(upload_to="WhyChooseUs/", null=True, blank=True)
-
-    class Meta:
-        verbose_name = 'Coming Soon Brief Information'
-        verbose_name_plural = 'Coming Soon Brief Information'
-
-    def __str__(self):
-        return self.summary
 
 
-class WhyChooseUs(models.Model):
-    summary = models.ForeignKey(WhyChooseUsSummary, null=True, blank=True, on_delete=models.CASCADE)
+class Feature(models.Model):
+    featureName = models.CharField(max_length=200, null=True, blank=True)
     title = models.CharField(max_length=200, null=True, blank=True)
+    summary = models.CharField(max_length=500, null=True, blank=True)
     description = tinymce_models.HTMLField(null=True, blank=True)
-    incon = models.ImageField(upload_to="WhyChooseUs/", null=True, blank=True,
-                              verbose_name="Icon", help_text="This is a small image which represents information added, you can download more from this webiste <a href='https://www.flaticon.com/' target='_blank' rel='noopener noreferrer'>Click To Download Icons</a>")
+    image = models.ImageField(upload_to="Feature/", null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title
 
     class Meta:
-        verbose_name = 'Coming Soon'
-        verbose_name_plural = 'Coming Soon'
+        verbose_name = 'Feature'
+        verbose_name_plural = 'Feature'
 
 OurProjects_choices = (
     ('first','completed'),

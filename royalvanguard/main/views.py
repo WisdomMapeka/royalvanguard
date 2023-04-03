@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from . models import (Contacts_Plus_Social_Media, Slider, SummaryServices, 
-                      AboutUs, Services, WhyChooseUsSummary, OurProjects, 
+                      AboutUs, Services, Feature, OurProjects, 
                       TeamMembers, Testimonials, ContactUs, BackGroundImages, Sectors)
 from . forms import ContactUsForm
 from django.http import HttpResponseRedirect
@@ -23,10 +23,26 @@ def index(request):
     projects = OurProjects.objects.all()
     teammembers = TeamMembers.objects.all()
     testimonials = Testimonials.objects.all()
+    
+
+
     try:
-        whychooseus = WhyChooseUsSummary.objects.all()[0]
+        feature = Feature.objects.all()[0]
     except IndexError:
-        whychooseus = False
+        feature = False
+
+    try:
+        feature1 = Feature.objects.all()[1]
+    except IndexError:
+        feature1 = False
+
+    try:
+        feature2 = Feature.objects.all()[2]
+    except IndexError:
+        feature2 = False
+
+
+
     
     try:
         about_us = AboutUs.objects.all()[0]
@@ -40,7 +56,9 @@ def index(request):
                                                "service_summaries":service_summaries,
                                                "about_us":about_us, 
                                                "services":services,
-                                               "whychooseus":whychooseus,
+                                               "feature":feature,
+                                               "feature1":feature1,
+                                               "feature2":feature2,
                                                "projects":projects,
                                                "teammembers":teammembers,
                                                "testimonials":testimonials,

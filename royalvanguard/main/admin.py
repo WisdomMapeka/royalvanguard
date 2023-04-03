@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (Contacts_Plus_Social_Media, Slider, SummaryServices, 
-                     AboutUs, Services, WhyChooseUs, OurProjects,
-                     TeamMembers, Testimonials, WhyChooseUsSummary,
+                     AboutUs, Services, Feature, OurProjects,
+                     TeamMembers, Testimonials, 
                      ContactUs, BackGroundImages, Sectors)
 
 admin.site.register(BackGroundImages)
@@ -24,7 +24,7 @@ class ServicesAdmin(admin.ModelAdmin):
 class SectorsAdmin(admin.ModelAdmin):
     list_display = ('title', 'summary')
 
-class  WhyChooseUsAdmin(admin.ModelAdmin):
+class  FeatureAdmin(admin.ModelAdmin):
     list_display = ('title', 'summary')
 
 class  OurProjectsAdmin(admin.ModelAdmin):
@@ -39,7 +39,7 @@ class  TestimonialsAdmin(admin.ModelAdmin):
 class  NewsLetterAdmin(admin.ModelAdmin):
     list_display = ('title', 'summary', 'email')
 
-class  WhyChooseUsSummaryAdmin(admin.ModelAdmin):
+class  FeatureSummaryAdmin(admin.ModelAdmin):
     list_display = ('summary',)
 
 class  ContactUsAdmin(admin.ModelAdmin):
@@ -61,8 +61,7 @@ admin.site.register(SummaryServices, SummaryServicesAdmin)
 admin.site.register(AboutUs, AboutUsAdmin)
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(Sectors, SectorsAdmin)
-admin.site.register(WhyChooseUs, WhyChooseUsAdmin)
-admin.site.register(WhyChooseUsSummary, WhyChooseUsSummaryAdmin)
+admin.site.register(Feature, FeatureAdmin)
 admin.site.register(OurProjects, OurProjectsAdmin)
 admin.site.register(TeamMembers, TeamMembersAdmin)
 admin.site.register(Testimonials, TestimonialsAdmin)
