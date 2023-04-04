@@ -57,24 +57,49 @@ class SummaryServices(models.Model):
     def __str__(self):
         return self.title
 
+belief_types = (
+    ("values", "values"),
+    ("belied", "belief")
+)
+class OurBeliefs(models.Model):
+    belief = models.CharField(blank=True, null=True, max_length=500)
+    description = models.CharField(blank=True, null=True, max_length=1000)
+    image = models.ImageField(upload_to="OurBeliefs/", null=True, blank=True)
+    icon = models.ImageField(upload_to="OurBeliefs/", null=True, blank=True)
+    belief_type = models.CharField(max_length=100, null=True, blank=True, choices = belief_types)
+
+    def __str__(self):
+        return self.belief
 
 class AboutUs(models.Model):
+    image_homepage = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
+    title_homepage = models.CharField(max_length=200, null=True, blank=True)
+    summary_homepage = tinymce_models.HTMLField(null=True, blank=True)
+    #----------------------------First section on about page--------------------------------------
     title = models.CharField(max_length=200, null=True, blank=True)
+    image = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
     summary = models.CharField(max_length=500, null=True, blank=True)
+    
+    image2 = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
+    title2 = models.CharField(max_length=200, null=True, blank=True)
+    summary2 = models.CharField(max_length=500, null=True, blank=True)
+
+    #---------------------------Section 2---------------------------------------------------------- 
+    image_secttion1 = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
+    secttion1 = tinymce_models.HTMLField(null=True, blank=True)
+
+    # ---------------------------------------------------------------------------------------------
+    image_our_beliefs = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
+    our_beliefs = models.ManyToManyField(OurBeliefs ,blank=True)
+
+    secttion3 = tinymce_models.HTMLField(null=True, blank=True)
+    secttion4 = tinymce_models.HTMLField(null=True, blank=True)
     description = tinymce_models.HTMLField(null=True, blank=True, 
     help_text="Information added here, will be displayed on the about page, put as much as you can, eg history, values, mission and more")
-    image = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True)
+    
+    
 
-    incon = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True,
-                              verbose_name="Icon", help_text="This is a small image which represents information added, you can download more from this webiste <a href='https://www.flaticon.com/' target='_blank' rel='noopener noreferrer'>Click To Download Icons</a>")
-    incon_explanation = models.CharField(max_length=200, null=True, blank=True, default="4", verbose_name="Number Of Clients")
-    incon_second_explanation = models.CharField(max_length=200, null=True, blank=True, default="Clients", verbose_name="Title", help_text="Title can be Clients or Any Other Word")
-
-    incon2 = models.ImageField(upload_to="AboutUsImages/", null=True, blank=True,
-                               verbose_name="Icon", help_text="This is a small image which represents information added, you can download more from this webiste <a href='https://www.flaticon.com/' target='_blank' rel='noopener noreferrer'>Click To Download Icons</a>")
-    incon_explanation2 = models.CharField(max_length=200, null=True, blank=True, default="12", verbose_name="NUmber Of Projects")
-    incon_second_explanation2 = models.CharField(max_length=200, null=True, blank=True, default="Projects", verbose_name="Title", help_text="Title can be Projects or Any Other Word")
-
+   
     class Meta:
         verbose_name = 'About Us Information'
         verbose_name_plural = 'About Us Information'
@@ -152,10 +177,11 @@ class OurProjects(models.Model):
 class TeamMembers(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     position = models.CharField(max_length=200, null=True, blank=True)
+    more_info = models.TextField(null=True, blank=True)
     profile_pic = models.ImageField(upload_to="TeamMembers/Profiles/", null=True, blank=True)
-    facebook_link = models.TextField(null=True, blank=True)
-    twitter_link = models.TextField(null=True, blank=True)
-    instagram_link = models.TextField(null=True, blank=True)
+    facebook_link = models.CharField(null=True, blank=True, max_length=1000)
+    twitter_link = models.CharField(null=True, blank=True, max_length=1000)
+    instagram_link = models.CharField(null=True, blank=True, max_length=1000)
 
     class Meta:
         verbose_name = 'Team Members'

@@ -54,16 +54,16 @@
             </div>
             <div class="row g-0 service-row justify-content-center">
                 <div class=" col-8 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="service-item border h-100 p-5 text-center justify-content-center">
-                        {% if about_us.image %}
+                    <div class="service-item border h-100 p-5 text-center text-dark justify-content-center">
+                        {% if about_us.image_homepage %}
                         <div class="btn-square bg-light rounded-circle mb-4 mx-auto" style="width: 64px; height: 64px;">
                             
-                            <img class="img-fluid" src={{about_us.image.url}} alt="Icon">
+                            <img class="img-fluid" src={{about_us.image_homepage.url}} alt="Icon">
                         </div>
                         {% else %}
                         {% endif %}
-                        <h4 class="mb-3">{{ about_us.title }}</h4>
-                        <p class="mb-4">{{ about_us.summary }}</p>
+                        <h4 class="mb-3">{{ about_us.title_homepage }}</h4>
+                        <p class="mb-4">{{ about_us.summary_homepage|safe }}</p>
                         <a class="btn" href="{% url 'about' %}"><i class="fa fa-arrow-right text-white me-3"></i>Read More</a>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
 
     <!-- WHY CHOOSE US-->
     {% if service_summaries %}
-    <div class="container-fluid py-5 bg-light" style="background-image: url({{b.img.url}}); position: relative;">
+    <div class="container-fluid py-5 bg-light" style="background-image: url({{backgroundImage1.img.url}}); position: relative;">
         <div class="overlay-custom"></div>
         <div class="container-fluid">
             

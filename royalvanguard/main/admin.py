@@ -2,9 +2,10 @@ from django.contrib import admin
 from .models import (Contacts_Plus_Social_Media, Slider, SummaryServices, 
                      AboutUs, Services, Feature, OurProjects,
                      TeamMembers, Testimonials, 
-                     ContactUs, BackGroundImages, Sectors)
+                     ContactUs, BackGroundImages, Sectors, OurBeliefs)
 
 admin.site.register(BackGroundImages)
+admin.site.register(OurBeliefs)
 
 class  Contacts_Plus_Social_MediaAdmin(admin.ModelAdmin):
     list_display = ('address', 'email', 'phone')

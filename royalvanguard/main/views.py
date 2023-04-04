@@ -8,17 +8,30 @@ from django.contrib import messages
 
 
 # Create your views here.
+def Trials(num, modelname):
+    if modelname == "BackGroundImages":
+        try:
+            item = BackGroundImages.objects.all()[num]
+        except IndexError:
+            item = False
 
+    elif modelname == "Contacts_Plus_Social_Media":
+        try:
+            item = Contacts_Plus_Social_Media.objects.all()[num]
+        except IndexError:
+            item = False
+
+    elif modelname == "AboutUs":
+        try:
+            item = AboutUs.objects.all()[num]
+        except IndexError:
+            item = False
+
+    return item
+ 
 def index(request):
     
     sectors = Sectors.objects.all()
-    try:
-        contact_details = Contacts_Plus_Social_Media.objects.all()[0]
-        b = BackGroundImages.objects.all()[0]
-    except IndexError:
-        contact_details = False
-        b = False
-    
     slider = Slider.objects.all()
     service_summaries = SummaryServices.objects.all()
     services = Services.objects.all()
@@ -26,32 +39,20 @@ def index(request):
     teammembers = TeamMembers.objects.all()
     testimonials = Testimonials.objects.all()
     
-
+    
+    backgroundImage1 = Trials(0, "BackGroundImages")
+    contact_details = Trials(0, "Contacts_Plus_Social_Media")
+    about_us = Trials(0, "AboutUs")
 
     try:
         feature = Feature.objects.all()[0]
-    except IndexError:
-        feature = False
-
-    try:
         feature1 = Feature.objects.all()[1]
-    except IndexError:
-        feature1 = False
-
-    try:
         feature2 = Feature.objects.all()[2]
     except IndexError:
+        feature = False
+        feature1 = False
         feature2 = False
-
-
-
-    
-    try:
-        about_us = AboutUs.objects.all()[0]
-    except IndexError:
-        about_us = False
-
-    
+        
     
     return render(request, "main/index.html", {"contact_details":contact_details,
                                                "slider":slider,
@@ -64,64 +65,61 @@ def index(request):
                                                "projects":projects,
                                                "teammembers":teammembers,
                                                "testimonials":testimonials,
-                                               "b":b,
+                                               "backgroundImage1":backgroundImage1,
                                                "sectors":sectors
                                                })
 
 
 def about(request):
-    try:
-        contact_details = Contacts_Plus_Social_Media.objects.all()[0]
-    except IndexError:
-        contact_details = False
-
-    try:
-        about_us = AboutUs.objects.all()[0]
-    except IndexError:
-        about_us = False
-
+    backgroundImage1 = Trials(0, "BackGroundImages")
+    backgroundImage2 = Trials(1, "BackGroundImages")
+    backgroundImage3 = Trials(2, "BackGroundImages")
+    backgroundImage4 = Trials(3, "BackGroundImages")
+    backgroundImage5 = Trials(4, "BackGroundImages")
+    contact_details = Trials(0, "Contacts_Plus_Social_Media")
+    about_us = Trials(0, "AboutUs")
     teammembers = TeamMembers.objects.all()
-    services = Services.objects.all()
+
+    try:
+        a = AboutUs.objects.all()[0]
+        why_us = a.our_beliefs.filter(belief_type = "values")
+        print(why_us.count())
+    except IndexError:
+        why_us = False
+    
 
     return render(request, "main/about.html", {"contact_details":contact_details,
                                                "about_us":about_us,
                                                "teammembers":teammembers,
-                                               "services":services })
+                                               "why_us":why_us,
+                                               "backgroundImage1":backgroundImage1,
+                                               "backgroundImage2":backgroundImage2,
+                                               "backgroundImage3":backgroundImage3,
+                                               "backgroundImage4":backgroundImage4,
+                                               "backgroundImage5":backgroundImage5, })
 
 def services(request):
-    try:
-        contact_details = Contacts_Plus_Social_Media.objects.all()[0]
-    except IndexError:
-        contact_details = False
 
+    contact_details = Trials(0, "Contacts_Plus_Social_Media")
     services = Services.objects.all()
-
     return render(request, "main/service.html", {"contact_details":contact_details,
                                                  "services":services,})
 
 
 def projects(request):
-    try:
-        contact_details = Contacts_Plus_Social_Media.objects.all()[0]
-    except IndexError:
-        contact_details = False
-
+    contact_details = Trials(0, "Contacts_Plus_Social_Media")
     services = Services.objects.all()
     projects = OurProjects.objects.all()
-
     return render(request, "main/project.html", {"contact_details":contact_details,
                                                  "services":services,
                                                  "projects":projects,})
 
                     
 def contacts(request):
-    try:
-        contact_details = Contacts_Plus_Social_Media.objects.all()[0]
-    except IndexError:
-        contact_details = False
-
     services = Services.objects.all()
     projects = OurProjects.objects.all()
+
+    contact_details = Trials(0, "Contacts_Plus_Social_Media")
 
     form = ContactUsForm()
     
@@ -152,18 +150,8 @@ def contacts(request):
 
 
 def sending_message_form_success(request):
-    try:
-        contact_details = Contacts_Plus_Social_Media.objects.all()[0]
-    except IndexError:
-        contact_details = False
-
     services = Services.objects.all()
-    projects = OurProjects.objects.all()
-
-    form = ContactUsForm()
-    
-    
- 
+    projects = OurProjects.objects.all() 
 
     return render(request, "main/sending_message_form_success.html", {"contact_details":contact_details,
                                                  "services":services,

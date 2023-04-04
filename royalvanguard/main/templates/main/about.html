@@ -1,46 +1,137 @@
 
 {% load static %}
 {% include './template-parts/header.html' %}
-
+<style>
+    .overlay-custom2 {
+  position: absolute;
+  /* display: none; */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+</style>
     
+     <!-- Page Header Start -->
+     <div class="container-fluid page-header py-5 mb-5 " style="background-image: url({{backgroundImage2.img.url}}); position: relative;">
+        <div class="overlay-custom2"></div>
+        <div class="container py-5 text-center" style="z-index: 4; position: relative;">
+            <h1 class="display-3 text-white mb-3 animated slideInDown" >About Us</h1>  
+        </div>
+    </div>
+    <!-- Page Header End -->
 
-
-    <!-- About Start -->
+    <!-- about us intro start -->
     {% if about_us %}
-    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+    <div class="container-fluid bg-white overflow-hidden my-1 px-lg-0 " >
         <div class="container about px-lg-0">
             <div class="row g-0 mx-lg-0">
-                <div class="col-lg-12 about-text py-5 px-md-5 wow fadeIn"  data-wow-delay="0.5s">
-                    <div class="p-lg-5 pe-lg-0">
-                        <div class="bg-primary mb-3" style="width: 60px; height: 2px;"></div>
-                        <h1 class="display-5 mb-4">About Us</h1>
-                        <p class="mb-4 pb-2">
-                            {{about_us.description|safe}}
-                        </p>
-                        
+                <div class="row about-text py-5 px-md-5 wow fadeIn"  data-wow-delay="0.5s">
+                    <div class="pe-lg-0 text-center col-lg-6">
+                        {% if about_us.image %}
+                        <div class="btn-square bg-light rounded-circle mb-4 mx-auto" style="width: 64px; height: 64px;">
+                            
+                            <img class="img-fluid" src={{about_us.image.url}} alt="Icon">
                         </div>
+                        {% else %}
+                        {% endif %}
+                        <h3 class="display-8">{{about_us.title}}</h3>
+                        <p class="mb-4 pb-2 col-4 text-center mx-auto text-dark">
+                           {{about_us.summary}}
+                        </p>
+                    </div>
+                    <div class="pe-lg-0 text-center col-lg-6">
+                        {% if about_us.image2 %}
+                        <div class="btn-square bg-light rounded-circle mb-4 mx-auto" style="width: 64px; height: 64px;">
+                            
+                            <img class="img-fluid" src={{about_us.image2.url}} alt="Icon">
+                        </div>
+                        {% else %}
+                        {% endif %}
+                        <h3 class="display-8">{{about_us.title2}}</h3>
+                        <p class="mb-4 pb-2 col-4 text-center mx-auto text-dark">
+                           {{about_us.summary2}}
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     {% endif %}
-    <!-- About End -->
+     <!-- about us intro ends -->
+
+     <!-- about us section1 start -->
+     {% if about_us %}
+     <div class="container-fluid bg-light overflow-hidden my-1 px-lg-0" style="background-image: url({{backgroundImage3.img.url}}); position: relative;">
+        <div class="overlay-custom2"></div>
+         <div class="container about px-lg-0">
+             <div class="row g-0 mx-lg-0">
+                 <div class="col-lg-12 about-text py-5 px-md-5 wow fadeIn "  data-wow-delay="0.5s">
+                     <div class="pe-lg-0 text-center col-4 mx-auto text-white" style="z-index: 4; position: relative;">
+                         <p class="mb-4 pb-2  text-center mx-auto text-white">
+                            {{about_us.secttion1|safe}}
+                         </p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     {% endif %}
+    <!-- about us section2 ends -->
+
+    <!-- Values start -->
+    {% if why_us  %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center">
+                <div class="bg-warning mb-3 mx-auto" style="width: 60px; height: 2px;"></div>
+                <h3 class="display-8 mb-5">HERE ARE REASONS TO WORK WITH US</h3>
+            </div>
+            <div class="row g-0 service-row">
+                {% for reason in why_us  %}
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="service-item border h-100 p-5">
+                        {% if reason.icon %}
+                        <div class="btn-square bg-light rounded-circle mb-4" style="width: 64px; height: 64px;">
+                            
+                            <img class="img-fluid" src={{reason.icon.url}} alt="Icon">
+                        </div>
+                        {% else %}
+                        {% endif %}
+                        <h4 class="mb-3">{{ reason.belief }}</h4>
+                        <p class="mb-4">{{ reason.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+        
+    </div>
+    {% endif %}
+    <!-- Values end -->
+
+
 
 
     <!-- Team Start -->
     {% if teammembers %}
-    <div class="container-xxl py-5">
-        <div class="container">
+    <div class="container-fluid py-5 bg-light">
+        <div class="container-fluid">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <div class="bg-primary mb-3 mx-auto" style="width: 60px; height: 2px;"></div>
-                <h1 class="display-5 mb-5">Team Members</h1>
+                <div class="bg-warning mb-3 mx-auto" style="width: 60px; height: 2px;"></div>
+                <h1 class="display-8 mb-5">Team Members</h1>
             </div>
             <div class="row g-4">
                 {% for teammember in teammembers %}
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
-                        <div class="overflow-hidden position-relative">
+                        <div class="overflow-hidden position-relative text-center">
                             {% if teammember.profile_pic %}
                             <img class="img-fluid" src={{teammember.profile_pic.url}} alt="">
                             {% else %}
@@ -51,9 +142,10 @@
                                 <a class="btn btn-square btn-dark rounded-circle m-1" href="{{teammember.instagram_link}}"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">{{teammember.name}}</h5>
-                            <span class="text-primary">{{teammember.position}}</span>
+                        <div class="text-center text-dark py-5">
+                            <h1 class="mb-0 display-8">{{teammember.name}}</h1>
+                            <span class="text-secondary">{{teammember.position}}</span>
+                            <div class="p-5">{{teammember.more_info}}</div>
                         </div>
                     </div>
                 </div>
@@ -65,6 +157,24 @@
     {% endif %}
     <!-- Team End -->
         
+    <!-- About general Start -->
+    {% if about_us %}
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+        <div class="container about px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-12 about-text py-5 px-md-5 wow fadeIn"  data-wow-delay="0.5s">
+                    <div class="p-lg-5 pe-lg-0">
+                        <p class="mb-4 pb-2">
+                            {{about_us.description|safe}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!-- About General End -->
+
 
    
     {% include './template-parts/footer.html' %}
