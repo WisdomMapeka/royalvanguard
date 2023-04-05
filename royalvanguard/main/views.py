@@ -27,6 +27,12 @@ def Trials(num, modelname):
         except IndexError:
             item = False
 
+    elif modelname == "Feature":
+        try:
+            item = Feature.objects.all()[num]
+        except IndexError:
+            item = False
+
     return item
  
 def index(request):
@@ -44,15 +50,11 @@ def index(request):
     contact_details = Trials(0, "Contacts_Plus_Social_Media")
     about_us = Trials(0, "AboutUs")
 
-    try:
-        feature = Feature.objects.all()[0]
-        feature1 = Feature.objects.all()[1]
-        feature2 = Feature.objects.all()[2]
-    except IndexError:
-        feature = False
-        feature1 = False
-        feature2 = False
-        
+  
+    feature = Trials(0, "Feature")
+    feature1 = Trials(1, "Feature")
+    feature2 = Trials(2, "Feature")
+
     
     return render(request, "main/index.html", {"contact_details":contact_details,
                                                "slider":slider,
