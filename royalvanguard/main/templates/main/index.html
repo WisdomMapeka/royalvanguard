@@ -137,8 +137,11 @@
                         {% else %}
                         {% endif %}
                         <h4 class="mb-3">{{ service.title }}</h4>
+                        {% if service.summary %}
                         <p class="mb-4">{{ service.summary }}</p>
                         <a class="btn" href=""><i class="fa fa-arrow-right text-white me-3"></i>Read More</a>
+                        {% else %}
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
